@@ -49,9 +49,9 @@ Donnees_logements_Aix_Mar = Donnees_logements_Aix_Mar %>%
 HLM_Aix_Mar_Brut = subset(Donnees_logements_Aix_Mar,Année.d.entrée.dans.le.patrimoine >= 2000)
 
 # Dataframe des logements toujours conventionné en 2026 et géolocalisé avec la meilleure qualité (Données de base pour les traitements futurs)
-HLM_Aix_Mar = subset(Donnees_logements_Aix_Mar, is.na(Année.expiration.de.la.convention) | Année.expiration.de.la.convention > 2025)
+HLM_Aix_Mar = subset(Donnees_logements_Aix_Mar, is.na(Année.expiration.de.la.convention) | Année.expiration.de.la.convention >= 2025)
 HLM_Aix_Mar = HLM_Aix_Mar[HLM_Aix_Mar$Qualité.de.la.géolocalisation == "11",]
-HLM_Aix_Mar = HLM_Aix_Mar[HLM_Aix_Mar$Année.d.entrée.dans.le.patrimoine >= 2000, ]
+HLM_Aix_Mar = HLM_Aix_Mar[HLM_Aix_Mar$Année.d.entrée.dans.le.patrimoine >= 2000 & HLM_Aix_Mar$Année.d.entrée.dans.le.patrimoine<=2024,]
 HLM_Aix_Mar = HLM_Aix_Mar %>% filter(!is.na(Coordonnée.X) & !is.na(Coordonnée.Y))
 
 # 4. Découpage temporel

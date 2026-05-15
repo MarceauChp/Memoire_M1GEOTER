@@ -216,9 +216,9 @@ variables_step   = variables_apres_vif
 n_step      = 0
 
 # Création d'un modèle avec toutes les variables filtrées (sans doublon)
-# À chaque itération identification de la variable la moins significative (p-valeurue LRT la plus haute)
+# À chaque itération identification de la variable qui dégrade le moins significativement le modèle (p-valeurue LRT la plus haute)
 # Si p-value > 0.05, on la retire et on re-crée un modèle sans elle
-# La boucle s'arrête quand toutes les variables restantes sont significatives (p-valeurue LRT 0<= 0.05)
+# La boucle s'arrête quand toutes les variables restantes sont significatives (p-value LRT <= 0.05)
 # Le BIC est affiché en début et en fin pour vérifier que la simplification est raisonnable
 repeat {
   lrt_table = drop1(modele_step, test = "Chisq")
